@@ -12,6 +12,7 @@ Registro 1
     ,"cidade":"São Paulo"
     ,"uf":"SP"
 }
+
 Registro 2
 {
      "documento":"2"
