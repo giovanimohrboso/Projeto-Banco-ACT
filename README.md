@@ -1,3 +1,5 @@
+DOCUMENTAÇÂO API: http://localhost:8085/swagger-ui/index.html#/
+
 http://localhost:8085/cliente
 
 Registro 1
