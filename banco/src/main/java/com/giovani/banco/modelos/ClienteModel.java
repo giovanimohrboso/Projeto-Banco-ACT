@@ -1,11 +1,11 @@
 package com.giovani.banco.modelos;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="TB_CLIENTE")
@@ -22,6 +22,9 @@ public class ClienteModel implements Serializable {
     private String bairro;
     private String cidade;
     private String uf;
+    @JsonIgnore
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
+    private List<ContaModel> contas;
 
     public String getDocumento() {
         return documento;
@@ -93,5 +96,12 @@ public class ClienteModel implements Serializable {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public List<ContaModel> getContas() {
+        return contas;
+    }
+    public void setContas(List<ContaModel> contas) {
+        this.contas = contas;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,11 +17,15 @@ public class ClienteServico {
     ClienteRepositorio clienteRepositorio;
 
     @Transactional
-    public ClienteModel save(ClienteModel clienteModel){
+    public ClienteModel cadastrar(ClienteModel clienteModel){
         return clienteRepositorio.save(clienteModel);
     }
 
-    public ResponseEntity<Object> consultarCliente(String documento){
+    public List<ClienteModel> listar(){
+        return clienteRepositorio.findAll();
+    }
+
+    public ResponseEntity<Object> consultar(String documento){
         Optional<ClienteModel> clienteModel = clienteRepositorio.findById(documento);
         if (clienteModel.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado!");
