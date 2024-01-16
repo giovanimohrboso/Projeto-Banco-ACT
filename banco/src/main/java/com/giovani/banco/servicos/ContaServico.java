@@ -45,4 +45,13 @@ public class ContaServico {
         }
         return null;
     }
+
+    public Boolean pagamento(ContaModelKey idSaque,ContaModelKey idDeposito, double valor) {
+        if(this.sacar(idSaque,valor) != null) {
+            this.depositar(idDeposito,valor);
+        }else{
+            return false;
+        }
+        return true;
+    }
 }
